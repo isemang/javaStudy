@@ -1,5 +1,5 @@
 # javaStudy
-## java를 공부하는 공간입니다!
+민진이의 자바 스터디 공간
 
 ## 1. programmers
 - 프로그래머스 문제들을 풀고 solution을 업로드 하는 곳 입니다.
