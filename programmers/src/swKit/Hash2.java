@@ -1,6 +1,7 @@
 package swKit;
 
 public class Hash2 {
+	//전화번호 목록
 	boolean solution(String[] phone_book) {
 		
         for (int i=0; i< phone_book.length-1; i++){

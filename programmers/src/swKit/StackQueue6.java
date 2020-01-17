@@ -1,6 +1,7 @@
 package swKit;
 
 public class StackQueue6 {
+	//주식가격
 	int[] solution(int[] prices) {
 		
         int n = prices.length;

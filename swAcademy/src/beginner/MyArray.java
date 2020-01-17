@@ -1,3 +1,4 @@
+package beginner;
 public class MyArray {
 	
 	private Object[] data;

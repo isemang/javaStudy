@@ -3,6 +3,7 @@ package swKit;
 import java.util.*;
 
 public class Sorting1 {
+	//K¹øÂ°¼ö
 	int[] solution(int[] array, int[][] commands) {
 		
         int[] answer = new int [commands.length];

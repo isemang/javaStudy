@@ -3,7 +3,7 @@ package swKit;
 import java.util.*;
 
 public class Sorting2 {
-
+	//가장 큰 수
 	String solution(int[] numbers) {
 		
         String answer = "";

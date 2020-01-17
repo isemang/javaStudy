@@ -3,6 +3,7 @@ package swKit;
 import java.util.*;
 
 public class Hash1 {
+	//완주하지 못한 선수
 	String solution(String[] participant, String[] completion) {
 		String answer = "";
 		int num = 0;
