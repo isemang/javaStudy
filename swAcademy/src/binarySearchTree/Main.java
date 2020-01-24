@@ -4,8 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("이진탐색트리 실습과제\n");
-		
+
 		Node<Integer, String> n2 = new Node<Integer, String>(30,"lemon");
 		Node n3 = new Node(80,"mango");
 		Node n4 = new Node(10,"cherry");
