@@ -6,23 +6,36 @@ public class DfsBfs1 {
 	public static void main(String[] args) {
 		int [] a = {5,6,2,4,3};
 		int b = -6;
+		System.out.println("Answer\t"+ qwer(0,true));
 
-		System.out.println(solution(a,b));
+//		System.out.println(solution(a,b));
 	}
 	
 	static int solution(int[] numbers, int target) {
         int answer = 0;
-        answer = dfs(numbers,0,0,target);
+        answer = test(numbers,0,0,target);
         return answer;
     }
 	
-	private static int dfs(int[] numbers, int node, int sum, int target) {
-		if(node == numbers.length) {
+	private static int test(int[] numbers, int index, int sum, int target) {
+		if(index == numbers.length) {
 			if(sum==target)
 				return 1;
 			return 0;
 		}
-		return dfs(numbers, node+1, sum+numbers[node], target)
-				+ dfs(numbers, node+1, sum-numbers[node],target);
+		return test(numbers, index+1, sum+numbers[index], target)
+				+ test(numbers, index+1, sum-numbers[index],target);
+	}
+	
+	static int qwer(int index,boolean isPlus) {
+		if(index ==5) {
+			if(isPlus) {
+				return 1;
+			} else {
+				return 2;
+			}
+		}
+		return qwer(index+1,isPlus) + qwer(index+1,!isPlus);
+		
 	}
 }
