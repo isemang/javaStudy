@@ -1,7 +1,7 @@
 package swKit;
 
 import java.util.*;
-
+//다리를 지나는 트럭
 public class StackQueue2 {
 	
 	public static void main(String[] args) {
