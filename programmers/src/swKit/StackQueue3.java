@@ -6,16 +6,14 @@ public class StackQueue3 {
 
 	public static void main(String [] args) {
 		
-		int [] p = {93,30,55};
-		int [] s = {1,30,5};
+		int [] p = {93,30,93,55,55,55,93};
+		int [] s = {1,30,1,5,5,5,1};
 		
 		solution(p,s);
 	}
 	
 	static void solution(int[] progresses, int[] speeds) {
         int[] res = new int [progresses.length];
-        int j=0;
-        int k=1;
         Queue<Integer> q = new LinkedList<>();
         
         for (int i=0; i<progresses.length; i++) {
@@ -28,36 +26,49 @@ public class StackQueue3 {
         //res에 결과값을 구한다(며칠이나 걸리는지)
         for (int i=0; i<progresses.length-1; i++) {
         	q.add(res[i]);
-        	if(q.peek()> res[i+1]) {
-        		res[i+1] = q.poll();
+        	if(q.peek() > res[i+1]) {
+        		res[i+1] = q.peek();
         	}
+        	q.poll();
         }
         
-      //결과값을 토대로 answer을 구한다  (ex)예제의 경우 res= 7, 7, 9 인데 이걸 answer = 2, 1로 바꿔줘야 함
-  
-        q.clear();
+        for (int i:res) {
+        	System.out.print(i+" ");
+        }
+        System.out.println();
         
-        for (int i=0; i<res.length-1; i++) {
-        	if (res[i] == res[i+1]) {
-        		k++;
+        //결과값을 토대로 answer을 구한다  (ex)예제의 경우 res= 7, 7, 9 인데 이걸 answer = 2, 1로 바꿔줘야 함
+        //answer를 어레이 리스트로 ??
+        int cnt = 0;
+        int data = res[0];
+        ArrayList<Integer> aList = new ArrayList<>();
+        
+        for (int i=0; i<res.length; i++) {
+        	if (data == res[i]) { //data랑 num이랑 같은 경우 //7,7,9 7이랑 7이랑 같을 떄
+        		cnt++;
         	}
-        	if (res[i] < res[i+1]) {
-        		q.add(k);
-        		k=1;
+        	else {
+    			aList.add(cnt);
+    			data = res[i];
+    			cnt = 1;
         	}
-        }
-        if (res[res.length-2] < res[res.length-1]) {
-        	q.add(1);
-        }
-        
-        int[] answer = new int[q.size()];
-        
-        for (int f: answer) {
-        	f = q.poll();
-        	System.out.print(f+" ");
+        	
+        	if(i== res.length-1) {
+        		aList.add(cnt);
+        	}
+        	
         }
         
+        int[] answer = new int[aList.size()];
+
+        int size=0;
+        for (int temp: aList) {
+        	answer[size++]= temp;
+        }
         
-      
-    }
+        for (int i:answer) {
+        	System.out.print(i+" ");
+        }
+        
+	}
 }
