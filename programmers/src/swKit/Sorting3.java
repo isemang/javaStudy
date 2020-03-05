@@ -31,8 +31,7 @@ public class Sorting3 {
         Collections.sort(aList, Collections.reverseOrder());
         
         int j=0;
-        
-        while(true){
+        while(true) {
             if (j >= citations.length){
                 answer = citations.length;
                 break;

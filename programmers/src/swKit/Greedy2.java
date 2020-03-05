@@ -56,7 +56,7 @@ public class Greedy2 {
             else answer += 'Z' - target + 1;
             //else까지 위아래 움직이면서 알파벳 자체를 바꾸는 거 !
             
-            //이부분 완전 몬소린지 모르겠음 .. ㅠㅠㅠㅠ
+            //이부분 완전 몬소린지 모르겠음 .. ㅠㅠㅠㅠ(왼, 오 구하는 부분)
             while(next < n && name.charAt(next) == 'A') next++; // 글자가 'A'인 경우 next를 1 증가
             int b = i + n - next + Math.min(i, n - next); // 현 위치에서 좌우 움직이는 수 중 작은 수를 구하는 식
             leftOrRight = Math.min(leftOrRight, b);

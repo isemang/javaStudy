@@ -1,11 +1,15 @@
 package swKit;
 
-//프린터
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
 
+//프린터
 public class StackQueue4 {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
 		int[] priorities = { 2, 1, 3, 2 };
 		int[] priorities2 = { 1, 1, 9, 1, 1, 1 };
@@ -16,64 +20,45 @@ public class StackQueue4 {
 		
 //		solution(p,location);
 //		solution(priorities, location);
-		solution(priorities2, location2);
+		System.out.println(solution(priorities2, location2));
 	}
-
-	static void solution(int[] priorities, int location) {
+	
+	static int solution(int[] priorities, int location) {
 		int answer = 0;
-		ArrayList<Print> impList = new ArrayList<>();
-		Queue<Print> pQueue = new LinkedList<>();
-
-		for (int i = 0; i < priorities.length; i++) {
-			impList.add(new Print(i, priorities[i]));
-		}
-
-		Collections.sort(impList,Collections.reverseOrder());
-
-		for (int i=0; i<impList.size(); i++) {
-			System.out.println(impList.get(i).toString());
-		}
-		System.out.println();
-//		return answer;
-	}
-}
-
-class Print implements Comparable<Print> {
-	int idx;
-	int imp;
-
-	Print(int idx, int imp) {
-		this.idx = idx;
-		this.imp = imp;
-	}
-
-	public int getIdx() { return idx;	}
-	public int getImp() { return imp;	}
-	
-	@Override
-	public String toString() {
-		return "Index\t" + idx + "\tImportant\t" + imp;
-	}
-	int i=0;
-	
-	@Override
-	public int compareTo(Print p) {
-		System.out.println("This\t" + toString() + "\tCompare\t" + p.toString());
-		if(this.imp > p.imp) {
-			return 1;
-		} else {
-			return -1;
+		int [][] array = new int[priorities.length][2];
+		ArrayList<Integer> aList = new ArrayList<>();
+		
+		for(int i=0; i<priorities.length; i++) {
+			array[i][0] = i;
+			array[i][1] = priorities[i];
+			aList.add(priorities[i]);
 		}
 		
-//		if(this.imp > p.imp) {
-//			return 1;
-//		}
-//		else if(this.imp < p.imp) {
-//			return -1;
-//		}
-//		else {
-//			return 0;
-//		}
+		Collections.sort(aList, Collections.reverseOrder());
+		Queue<Integer> q = new LinkedList<>();
+		
+		for (int i=0; i<aList.size(); i++) {
+			q.add(aList.get(i));
+		}
+		
+		int j=0;
+		while(!q.isEmpty()) {
+			if(j >= priorities.length) {
+				j = 0;
+			}
+			if(array[j][1] == q.peek()) {
+				q.poll();
+				answer++;
+				if(array[j][0] == location) {
+					break;
+				}
+			}
+			//맞으면 q.poll 하고 j를 옮긴다
+			//틀리면 q.poll 안됨,j 옮긴다
+			j++;
+		}
+		
+		return answer;
 	}
 
 }
